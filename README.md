@@ -20,8 +20,8 @@ This package asks one controlled question: under a fixed one-GPU training budget
 The notebook is a launcher; the scripts and YAML configuration are the source of truth. A clean Colab reproduction requires a T4-class GPU and enough session time for the matrix.
 
 ```bash
-git clone <VERIFIED_REPOSITORY_URL>
-cd <REPOSITORY_DIRECTORY>
+git clone https://github.com/brentoatis-collab/cst627-lora-rank-ablation-portfolio.git
+cd cst627-lora-rank-ablation-portfolio
 python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 python run_ablation.py --config configs/ablation.yaml --mode all
@@ -116,7 +116,7 @@ Company context: [Great River Energy cooperative model](https://greatriverenergy
 
 ## Portfolio links
 
-- Repository: `<VERIFIED_REPOSITORY_URL>`
+- Repository: <https://github.com/brentoatis-collab/cst627-lora-rank-ablation-portfolio>
 - Recorded walkthrough: `<VIDEO_LINK_AFTER_RECORDING>`
 
-These placeholders must be replaced and clicked successfully before submission.
+The repository link was verified after publication. Replace and verify the video placeholder after recording.
