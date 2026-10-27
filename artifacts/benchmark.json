@@ -1,8 +1,8 @@
 {
-  "mode": "aggregate",
+  "mode": "all",
   "smoke": false,
-  "wall_clock_seconds": 8.84947725001257,
+  "wall_clock_seconds": 0.7201302190001115,
   "pretrain_seconds": 0.0,
-  "device": "cpu",
-  "completed_runs": 0
+  "device": "cuda",
+  "completed_runs": 9
 }

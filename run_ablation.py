@@ -97,6 +97,15 @@ def main():
     checkpoint_path = resolve_path(ROOT, config["pretraining"]["checkpoint"])
     results_dir, plots_dir = output_dir / "results", output_dir / "plots"
     results_dir.mkdir(parents=True, exist_ok=True)
+
+    # Aggregation is intentionally evidence-preserving: it rebuilds only the
+    # CSV summaries and plot from committed per-run JSON records. It must not
+    # capture the reviewer's environment, generate data, or replace benchmark
+    # records from the confirmatory GPU session.
+    if args.mode == "aggregate":
+        aggregate(results_dir, plots_dir)
+        return
+
     capture_environment(output_dir / "environment" / "environment.json")
     if not data_path.exists():
         metadata = generate_dataset(config["data"], data_path, metadata_path)
@@ -122,8 +131,6 @@ def main():
         if args.smoke:
             seeds = [seeds[0]]
         pairs = [(rank, seed) for rank in config["model"]["ranks"] for seed in seeds]
-    else:
-        pairs = []
     for rank, seed in pairs:
         destination = results_dir / f"rank{rank}_seed{seed}.json"
         if destination.exists() and not args.smoke:

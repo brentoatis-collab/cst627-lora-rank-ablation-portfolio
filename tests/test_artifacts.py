@@ -2,8 +2,13 @@ import csv
 import hashlib
 import json
 import statistics
+import tempfile
 import unittest
 from pathlib import Path
+
+import yaml
+
+from src.data import generate_dataset
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,7 +54,18 @@ class ArtifactIntegrityTests(unittest.TestCase):
     def test_dataset_hash_matches_provenance(self):
         data_path = ROOT / "artifacts/data/synthetic_demand.npz"
         metadata = json.loads((ROOT / "artifacts/data/synthetic_demand_metadata.json").read_text(encoding="utf-8"))
-        digest = hashlib.sha256(data_path.read_bytes()).hexdigest()
+        if data_path.exists():
+            digest = hashlib.sha256(data_path.read_bytes()).hexdigest()
+        else:
+            config = yaml.safe_load((ROOT / "configs/ablation.yaml").read_text(encoding="utf-8"))
+            with tempfile.TemporaryDirectory() as directory:
+                temporary_root = Path(directory)
+                generated = generate_dataset(
+                    config["data"],
+                    temporary_root / "synthetic_demand.npz",
+                    temporary_root / "synthetic_demand_metadata.json",
+                )
+                digest = generated["sha256"]
         self.assertEqual(digest, metadata["sha256"])
 
 
