@@ -1,0 +1,22 @@
+{
+  "generator": "src/data.py",
+  "generation_seed": 62708,
+  "hours_per_coop": 17520,
+  "source_coops": 3,
+  "target_coops": 1,
+  "lookback_hours": 48,
+  "forecast_horizon_hours": 6,
+  "chronological_split": {
+    "train_end": 12226,
+    "validation_end": 14846,
+    "total_windows": 17467
+  },
+  "features": [
+    "demand_kw",
+    "temperature_c",
+    "hour_sin",
+    "hour_cos"
+  ],
+  "sha256": "5ec5e4fa0634248436f6ae9a6f71ded45bdb4dcec26e7c76f7f73abb906264d5",
+  "important_limit": "Synthetic traces reflect programmed seasonality and noise, not observed customer behavior."
+}

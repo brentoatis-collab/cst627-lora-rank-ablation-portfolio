@@ -1,0 +1,10 @@
+{
+  "pretrain_seconds": 8.586958790999915,
+  "history": [
+    {
+      "epoch": 1,
+      "train_mse_scaled": 0.1425369049506989,
+      "validation_mse_scaled": 0.10380565096403806
+    }
+  ]
+}

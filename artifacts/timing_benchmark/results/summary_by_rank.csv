@@ -1,0 +1,2 @@
+rank,n_seeds,mean_mape_percent,std_mape_percent,min_mape_percent,max_mape_percent,mean_training_seconds,mean_run_seconds,mean_peak_gpu_memory_mb
+8,1,3.350431203842163,nan,3.350431203842163,3.350431203842163,1.607731762999947,1.7334214859999975,123.4169921875

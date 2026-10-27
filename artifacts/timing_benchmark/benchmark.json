@@ -1,0 +1,8 @@
+{
+  "mode": "all",
+  "smoke": false,
+  "wall_clock_seconds": 11.491908917999808,
+  "pretrain_seconds": 8.586958790999915,
+  "device": "cuda",
+  "completed_runs": 1
+}

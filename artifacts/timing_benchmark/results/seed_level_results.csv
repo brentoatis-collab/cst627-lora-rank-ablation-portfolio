@@ -1,0 +1,2 @@
+rank,seed,mae_kw,rmse_kw,mape_percent,training_seconds,evaluation_seconds,adaptation_and_evaluation_seconds,peak_gpu_memory_mb,trainable_parameters,device
+8,909,5.976955890655518,7.542203426361084,3.350431203842163,1.607731762999947,0.1254606509999121,1.7334214859999975,123.4169921875,4096,cuda

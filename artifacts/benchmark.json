@@ -1,0 +1,8 @@
+{
+  "mode": "aggregate",
+  "smoke": false,
+  "wall_clock_seconds": 8.84947725001257,
+  "pretrain_seconds": 0.0,
+  "device": "cpu",
+  "completed_runs": 0
+}

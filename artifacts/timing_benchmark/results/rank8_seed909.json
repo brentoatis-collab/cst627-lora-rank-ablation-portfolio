@@ -1,0 +1,20 @@
+{
+  "rank": 8,
+  "seed": 909,
+  "mae_kw": 5.976955890655518,
+  "rmse_kw": 7.542203426361084,
+  "mape_percent": 3.350431203842163,
+  "training_seconds": 1.607731762999947,
+  "evaluation_seconds": 0.1254606509999121,
+  "adaptation_and_evaluation_seconds": 1.7334214859999975,
+  "peak_gpu_memory_mb": 123.4169921875,
+  "device": "cuda",
+  "trainable_parameters": 4096,
+  "history": [
+    {
+      "epoch": 1,
+      "train_mse_scaled": 0.11537605514556398,
+      "validation_mse_scaled": 0.08869720218518308
+    }
+  ]
+}

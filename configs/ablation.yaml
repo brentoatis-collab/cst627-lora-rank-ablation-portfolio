@@ -1,0 +1,66 @@
+project:
+  name: cst627-week7-lora-rank-ablation
+  output_dir: artifacts
+
+reproducibility:
+  deterministic_algorithms: true
+  warn_only: true
+  num_workers: 0
+  pretrain_seed: 2026
+  study_seeds: [101, 202, 303]
+  optional_extended_seeds: [404, 505]
+
+data:
+  path: artifacts/data/synthetic_demand.npz
+  metadata_path: artifacts/data/synthetic_demand_metadata.json
+  generation_seed: 62707
+  hours: 17520
+  lookback: 48
+  horizon: 6
+  source_coops: 3
+  train_fraction: 0.70
+  validation_fraction: 0.15
+
+model:
+  input_features: 4
+  d_model: 64
+  n_heads: 4
+  n_layers: 2
+  d_ff: 128
+  max_sequence_length: 48
+  dropout: 0.10
+  lora_targets: [q_proj, v_proj]
+  lora_dropout: 0.05
+  lora_scale_policy: alpha_equals_rank
+  ranks: [4, 8, 16]
+
+pretraining:
+  epochs: 8
+  batch_size: 128
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  checkpoint: artifacts/checkpoints/shared_backbone.pt
+
+adaptation:
+  epochs: 10
+  batch_size: 128
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  gradient_clip_norm: 1.0
+
+evaluation:
+  primary_metric: mape_percent
+  epsilon_kw: 1.0
+  report_metrics: [mae_kw, rmse_kw, mape_percent]
+  decision_rule: >-
+    A rank is not declared superior unless its mean test MAPE is lower and the
+    seed-level ranges do not overlap. Overlapping ranges are reported as
+    inconclusive rather than as an improvement.
+
+budget:
+  colab_session_minutes: 180
+  utilization_limit: 0.80
+  seed_rule: >-
+    After the Colab smoke benchmark, use five seeds per rank only if projected
+    total time (shared pretraining plus 15 adaptation runs) is at most 144
+    minutes. Otherwise use the preregistered minimum of three seeds per rank.
