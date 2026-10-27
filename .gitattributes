@@ -1,0 +1,2 @@
+# Keep the Colab launcher available without counting it in GitHub language statistics.
+scripts/run_colab.sh -linguist-detectable
